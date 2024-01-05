@@ -1,0 +1,6 @@
+.group {
+    border: .0625rem solid var(--mantine-color-gray-4);
+    border-radius: var(--mantine-radius-sm);
+    padding: 0;
+    margin-top: calc(var(--mantine-spacing-xs) / 2);
+}

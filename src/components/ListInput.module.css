@@ -1,0 +1,28 @@
+.group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--mantine-spacing-xs);
+    width: 100%;
+
+    & > :first-child {
+        flex-grow: 1;
+    }
+}
+
+.listRoot {
+    margin-top: calc(var(--mantine-spacing-xs) / 2) !important;
+    list-style-type: none;
+}
+
+.listItemWrapper {
+    width: 100%;
+}
+
+.listItemLabel {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}

@@ -1,0 +1,40 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    padding: var(--mantine-spacing-md);
+    gap: var(--mantine-spacing-md);
+}
+
+.middleContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--mantine-spacing-md);
+
+    box-shadow: var(--mantine-shadow-sm);
+    padding: var(--mantine-spacing-md);
+    border-radius: var(--mantine-radius-md);
+
+    margin-top: auto;
+    margin-bottom: auto;
+
+    max-width: 500px;
+    width: 100%;
+
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+        box-shadow: var(--mantine-shadow-md);
+    }
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: var(--mantine-spacing-md);
+}
