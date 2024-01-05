@@ -3,10 +3,11 @@
  * @param array
  * @param chunkSize
  */
+ // @typescript-eslint/no-explicit-any
 export const sliceArrayIntoChunks = (array: any[], chunkSize: number) => {
-    let result = [];
+    const result = [];
     for (let i = 0; i < array.length; i += chunkSize) {
-        let chunk = array.slice(i, i + chunkSize);
+        const chunk = array.slice(i, i + chunkSize);
         result.push(chunk);
     }
     return result;

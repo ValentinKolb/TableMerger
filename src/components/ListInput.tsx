@@ -12,8 +12,8 @@ export default function ListInput<T extends string | number>({
                                                                  emptyLabel,
                                                                  ...props
                                                              }: {
-    value: T[],
-    onChange: (value: T[]) => void,
+    value?: T[],
+    onChange?: (value: T[]) => void,
     type?: "text" | "number",
     placeholder?: string,
     itemPrefix?: string,
@@ -23,14 +23,14 @@ export default function ListInput<T extends string | number>({
     const [temp, setTemp] = useState<T>()
 
     const updateValue = () => {
-        if (temp !== undefined && temp !== "" && !value.includes(temp)) {
-            onChange([...value, temp])
+        if (temp !== undefined && temp !== "" && !(value ?? []).includes(temp)) {
+            onChange && onChange([...(value ?? []), temp])
             setTemp(undefined)
         }
     }
 
     const removeItem = (item: T) => {
-        onChange(value.filter(v => v !== item))
+        onChange && onChange((value ?? []).filter(v => v !== item))
     }
 
     return (
@@ -43,7 +43,7 @@ export default function ListInput<T extends string | number>({
                     itemLabel: classes.listItemLabel,
                 }}
             >
-                {value.map((v, i) => (
+                {(value ?? []).map((v, i) => (
                     <List.Item key={i}>
                         <Text truncate="end" size={"sm"}>
                             <Text c={"dimmed"} span>
@@ -67,7 +67,7 @@ export default function ListInput<T extends string | number>({
                 ))}
             </List>
 
-            {emptyLabel && value.length === 0 && (
+            {emptyLabel && (value ?? []).length === 0 && (
                 <Text c={"dimmed"} size={"sm"} maw={"100%"} truncate={"end"}>
                     {emptyLabel}
                 </Text>

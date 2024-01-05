@@ -8,8 +8,8 @@ export default function CountInput({
                                    }: {
     min?: number,
     max?: number,
-    value: number,
-    onChange: (value: number) => void,
+    value?: number,
+    onChange?: (value: number) => void,
 
 } & InputWrapperProps) {
 
@@ -17,15 +17,15 @@ export default function CountInput({
         <Input.Wrapper
             {...props}
         >
-            <Group className={classes.group} justify={"center"} >
+            <Group className={classes.group} justify={"center"}>
                 <ActionIcon
                     variant={"transparent"}
                     aria-label={"decrement value"}
                     size={"xs"}
                     color={"red"}
                     onClick={() => {
-                        if (min !== undefined && value <= min) return
-                        onChange(value - 1)
+                        if (min !== undefined && (value ?? 0) <= min) return
+                        onChange && onChange((value ?? 1) - 1)
                     }}
                 >
                     <IconMinus/>
@@ -39,7 +39,7 @@ export default function CountInput({
                     max={max}
                     value={value}
                     onChange={(event) => {
-                        onChange(parseInt(event.currentTarget.value))
+                        onChange && onChange(parseInt(event.currentTarget.value))
                     }}
                     style={{
                         width: `calc(${value ? value.toString().length : 1}ch)`
@@ -52,8 +52,8 @@ export default function CountInput({
                     size={"xs"}
                     color={"green"}
                     onClick={() => {
-                        if (max !== undefined && value >= max) return
-                        onChange(value + 1)
+                        if (max !== undefined && (value ?? 0) >= max) return
+                        onChange && onChange((value ?? 0) + 1)
                     }}
                 >
                     <IconPlus/>
